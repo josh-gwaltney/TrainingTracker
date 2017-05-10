@@ -1,0 +1,276 @@
+@import 'calendar';
+
+.left-menu {
+  background: $gray-dark;
+  z-index: 900;
+
+  &.collapsed {
+    @include flex-item(0, 0, 64px);
+  }
+
+  &.expanded {
+    @include flex-item(0, 0, 240px);
+  }
+}
+@media screen and (max-width: $small){
+  .left-menu{
+    @include hide();
+  }
+}
+
+.top-bar {
+  @include box-shadow();
+  @include flex();
+  z-index: 1000;
+
+  &>div {
+    @include flex-item(1, 0, 64px);
+  }
+}
+
+@media screen and (max-width: $small){
+  .top-bar {
+    @include flex-item(0, 0, 128px);
+    @include flex-column();
+
+    &>div:nth-child(1){
+      border-bottom: solid 1px $black;
+    }
+  }
+}
+
+@media screen and (min-width: 481px){
+  .top-bar {
+    @include flex-item(0, 0, 64px);
+    @include flex-row();
+  }
+
+}
+
+@media screen and (min-width: 481px){
+  .left-menu {
+    transition: width 0.5s cubic-bezier(0.15, 0.99, 0.18, 1.01);
+
+    &>a {
+      color: $white;
+    }
+  }
+
+  .left-menu:hover{
+    flex-basis: 240px !important;
+  }
+
+  @keyframes slideIn {
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @include flex-box(column);
+  font-family: $font;
+  font-size: $font-size;
+}
+
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  @include flex-item(1, 1, auto);
+  @include flex-box(column);
+}
+
+.main {
+  @include flex-box();
+  @include flex-item(1, 1, auto);
+
+  &>.body {
+    background: $gray-bright;
+    @include flex-box(column);
+    @include flex-item(1, 1, auto);
+
+    &>.title {
+      background: $gray-light;
+      @include box-shadow();
+      @include flex-item(0, 0, auto);
+      padding: $gutter;
+      z-index: 800;
+    }
+
+    &>.content {
+      @include box-shadow();
+      @include flex-box();
+      @include flex-item(1, 1, auto);
+      padding: $gutter;
+      z-index: 700;
+    }
+
+    &>.footer {
+      background: #FEFEFE;
+      flex: 0 0 auto;
+      padding: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: $small){
+  .hide-small {
+    visibility: hidden;
+  }
+}
+
+@media screen and (min-width: 481px){
+  .hide-medium {
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: $large){
+  .hide-large {
+    visibility: hidden;
+  }
+}
+
+
+//html, body {
+//  height: 100%;
+//  width: 100%;
+//  margin: 0;
+//  padding: 0;
+//}
+//
+//body {
+//  @include flex-box(column);
+//  background: $gray-bright;
+//  font-family: $font;
+//  font-size: $font-size;
+//  overflow: hidden;
+//}
+//
+//.header {
+//  @include box-shadow();
+//  background: $white;
+//  z-index: 1000;
+//
+//  &>.left {
+//    @include flex-item(1, 1, auto);
+//  }
+//
+//  &>.right {
+//    @include flex-item(1, 1, auto);
+//  }
+//}
+//
+//.main {
+//  @include flex-box(column);
+//  @include flex-item(1, 1, auto);
+//
+//  .title {
+//    @include box-shadow();
+//    @include flex-item(0, 1, 64px);
+//    background: $gray-light;
+//    z-index: 800;
+//  }
+//
+//  .content {
+//    @include box-shadow();
+//    @include flex-box(column);
+//    @include flex-item(1, 1, auto);
+//    padding: 16px;
+//    z-index: 700;
+//  }
+//
+//  .footer {
+//    @include flex-item(0, 1, 64px);
+//    background: $white;
+//  }
+//}
+//
+//.left-menu {
+//
+//  @include flex-box(column);
+//  background: $gray-dark;
+//  bottom: 0;
+//  left: -192px;
+//  position: absolute;
+//  top: 64px;
+//  width: 256px;
+//  z-index: 900;
+//
+//  &:hover {
+//    transition: 1s;
+//    left: 0;
+//    -webkit-animation: slide 0.2s forwards;
+//    -webkit-animation-delay: 0.2s;
+//    animation: slide 0.2s forwards;
+//    animation-delay: 0.2s;
+//
+//    &>.nav {
+//      padding: 0;
+//    }
+//  }
+//
+//  &>.nav {
+//    @include flex-item(1, 1, auto);
+//    @include flex-box(column);
+//    list-style: none;
+//    margin: 0;
+//    padding: 0 0 0 192px;
+//
+//    &>li {
+//      @include flex-item(1, 1, auto);
+//
+//      &>a {
+//        color: $white;
+//        padding: 15px;
+//      }
+//    }
+//  }
+//}
+//
+//@-webkit-keyframes slide {
+//  100% { left: 0; }
+//}
+//
+//@keyframes slide {
+//  100% { left: 0; }
+//}
+//
+//@media screen and (max-width: $small){
+//  .header {
+//    @include flex-box(column);
+//    @include flex-item(0, 1, 128px);
+//
+//    &>.left {
+//      border-bottom: solid 1px $black;
+//    }
+//  }
+//
+//  .left-menu {
+//    display: none;
+//  }
+//}
+//
+//
+//@media screen and (min-width: 481px){
+//  .header {
+//    @include flex-box(row);
+//    @include flex-item(0, 1, 64px);
+//  }
+//
+//  .main {
+//    margin-left: 64px;
+//  }
+//}
+//
+//@import 'calendar';

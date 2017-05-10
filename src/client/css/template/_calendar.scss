@@ -1,0 +1,82 @@
+.calendar {
+  @include flex-item(1, 1, auto);
+  @include flex-box(column);
+  justify-content: flex-start;
+
+  &>.fixed {
+    @include flex-item(0, 1, auto);
+  }
+
+  &>.scrollable {
+    @include flex-item(1, 1, auto);
+    @include flex-box(column);
+    overflow-y: scroll;
+
+    &>.week {
+      @include flex-item(1, 1, auto);
+      @include flex-box(row);
+
+      &>.day {
+        @include flex-item(1, 1, auto);
+        @include flex-box(column);
+        justify-content: flex-start;
+
+        &>.heading {
+          @include flex-item(0, 1, auto);
+          background: $gray-light;
+          border-bottom: solid 1px $gray-dark;
+          padding: 4px 8px;
+        }
+
+        &>.details{
+          @include flex-item(1, 0, auto);
+          padding: 8px;
+
+          &>.item {
+            @include flex-item(1, 1, auto);
+            @include flex-box(column);
+            background: $gray-light;
+            padding: 4px;
+
+            &>.heading {
+
+            }
+
+            &>.details {
+
+            }
+
+          }
+        }
+      }
+
+      &>.summary{
+        @include flex-item(2, 1, auto);
+        @include flex-box(column);
+        justify-content: flex-start;
+
+        &>.heading {
+          @include flex-item(0, 1, auto);
+          background: $gray-dark;
+          border-bottom: solid 1px $gray-dark;
+          color: $white;
+          padding: 4px 8px;
+          text-transform: uppercase;
+        }
+
+        &>.details {
+          padding: 8px;
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: $small){
+
+}
+
+@media screen and (min-width: 481px){
+
+}
